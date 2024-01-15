@@ -1,7 +1,7 @@
 # 0x00. Python - Variable Annotations
 :open_file_folder: Specializations - Web Stack programming ― Back-end  
 :bust_in_silhouette: by Emmanuel Turlay, Staff Software Engineer at Cruise  
-:copyright: **[Holberton School](https://www.alxafrica.com/)**  
+:copyright: **[ALX Africa](https://www.alxafrica.com/)**  
 :bookmark: duck typing | python | type annotations | variable annotations
 
 ## Resources
@@ -39,5 +39,5 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 * [x] 12. Type Checking
 
 ## Software engineer
-Mohammed Badmus
+Mohammed Badmus (globalsmile)
 :octocat: [GitHub](https://github.com/globalsmile/)
