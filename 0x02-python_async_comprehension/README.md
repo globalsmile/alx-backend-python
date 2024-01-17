@@ -1,7 +1,7 @@
 # 0x02. Python - Async Comprehension
 :open_file_folder: Specializations - Web Stack programming ― Back-end  
 :bust_in_silhouette: by Emmanuel Turlay, Staff Software Engineer at Cruise  
-:copyright: **[Holberton School](https://www.holbertonschool.com/)**  
+:copyright: **[ALX Africa](https://www.alxafrica.com/)**  
 :bookmark: async comprehension | async generators | python
 
 ## Resources
@@ -26,5 +26,5 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 * [x] 2. Run time for four parallel comprehensions
 
 ## Software engineer
-Javier Andrés Garzón Patarroyo  
-:octocat: [GitHub](https://github.com/javierandresgp/)
+Badmus Mohammed 
+:octocat: [GitHub](https://github.com/globalsmile/)
