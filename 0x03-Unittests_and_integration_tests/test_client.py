@@ -60,6 +60,20 @@ class TestGithubOrgClient(unittest.TestCase):
         test_return = test_client.has_license(repo, license_key)
         self.assertEqual(expected_return, test_return)
 
+    @patch("client.GithubOrgClient._public_repos_url",
+           new_callable=PropertyMock,
+           return_value="https://api.github.com/")
+    def test_public_repos_with_license(self, mock_pub):
+        """ to unit-test GithubOrgClient.public_repos with
+        the argument license """
+        with patch("client.get_json",
+                   return_value=[{"license": {"key": "my_license"}}]) as mgt:
+            test_client = GithubOrgClient("holberton")
+            test_return = test_client.public_repos("my_license")
+            self.assertEqual(test_return, [{"license": {"key": "my_license"}}])
+            mgt.assert_called_once
+            mock_pub.assert_called_once
+
 
 @parameterized_class(
     ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
