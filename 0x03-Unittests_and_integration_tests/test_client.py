@@ -2,6 +2,7 @@
 """ Parameterize and patch as decorators, Mocking a property, More patching,
     Parameterize, Integration test: fixtures, Integration tests """
 import unittest
+from typing import Dict 
 from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized
 from client import GithubOrgClient
@@ -16,14 +17,14 @@ class TestGithubOrgClient(unittest.TestCase):
         ("abc"),
         ])
     @patch("client.get_json", return_value={"payload": True})
-    def test_org(self, org_name, mock_get):
+    def test_org(self, org_name: str, mock_get: Mock) -> None:
         """ test that GithubOrgClient.org returns the correct value """
         test_client = GithubOrgClient(org_name)
         test_return = test_client.org
         self.assertEqual(test_return, mock_get.return_value)
         mock_get.assert_called_once
 
-    def test_public_repos_url(self):
+    def test_public_repos_url(self) -> None:
         """ to unit-test GithubOrgClient._public_repos_url """
         with patch.object(GithubOrgClient,
                           "org",
@@ -37,7 +38,7 @@ class TestGithubOrgClient(unittest.TestCase):
                              mock_get.return_value.get("repos_url"))
 
     @patch("client.get_json", return_value=[{"name": "holberton"}])
-    def test_public_repos(self, mock_get):
+    def test_public_repos(self, mock_get: Mock) -> None:
         """ to unit-test GithubOrgClient.public_repos """
         with patch.object(GithubOrgClient,
                           "_public_repos_url",
@@ -54,7 +55,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "my_license"}}, license_key="my_license"),
         ({"license": {"key": "other_license"}}, license_key="my_license"),
         ])
-    def test_has_license(self, repo, license_key, expected_return):
+    def test_has_license(self, repo: Dict, license_key: str, expected_return: bool) -> None:
         """ to unit-test GithubOrgClient.has_license """
         test_client = GithubOrgClient("holberton")
         test_return = test_client.has_license(repo, license_key)
@@ -63,7 +64,7 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch("client.GithubOrgClient._public_repos_url",
            new_callable=PropertyMock,
            return_value="https://api.github.com/")
-    def test_public_repos_with_license(self, mock_pub):
+    def test_public_repos_with_license(self, mock_pub: Mock) -> None:
         """ to unit-test GithubOrgClient.public_repos with
         the argument license """
         with patch("client.get_json",
@@ -82,23 +83,23 @@ class TestGithubOrgClient(unittest.TestCase):
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """ TESTCASE: inputs to test the functionality """
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         """ It is part of the unittest.TestCase API
         method to return example payloads found in the fixtures """
         cls.get_patcher = patch('requests.get', side_effect=HTTPError)
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(cls) -> None:
         """ It is part of the unittest.TestCase API
         method to stop the patcher """
         cls.get_patcher.stop()
 
-    def test_public_repos(self):
+    def test_public_repos(self) -> None:
         """ method to test GithubOrgClient.public_repos """
         test_class = GithubOrgClient("holberton")
         assert True
 
-    def test_public_repos_with_license(self):
+    def test_public_repos_with_license(self) -> None:
         """ method to test the public_repos with the argument license """
         test_class = GithubOrgClient("holberton")
         assert True
