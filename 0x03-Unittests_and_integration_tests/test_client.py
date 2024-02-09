@@ -14,7 +14,7 @@ class TestGithubOrgClient(unittest.TestCase):
     """ TESTCASE"""
 
     """inputs to test the functionality """
-    @parameterized.expand([
+    @parameterized_expand([
         ("google"),
         ("abc"),
         ])
@@ -53,7 +53,7 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_pub.assert_called_once
 
     """ inputs to test the functionality """
-    @parameterized.expand([
+    @parameterized_expand([
         ({"license": {"key": "my_license"}}, license_key="my_license"),
         ({"license": {"key": "other_license"}}, license_key="my_license"),
         ])
