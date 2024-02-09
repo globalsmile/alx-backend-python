@@ -11,7 +11,9 @@ from urllib.error import HTTPError
 
 
 class TestGithubOrgClient(unittest.TestCase):
-    """ TESTCASE: inputs to test the functionality """
+    """ TESTCASE"""
+
+    """inputs to test the functionality """
     @parameterized.expand([
         ("google"),
         ("abc"),
@@ -82,13 +84,16 @@ class TestGithubOrgClient(unittest.TestCase):
     TEST_PAYLOAD
 )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """ TESTCASE: inputs to test the functionality """
+    """ TESTCASE"""
+
+    """ inputs to test the functionality """
     @classmethod
     def setUpClass(cls) -> None:
         """ It is part of the unittest.TestCase API
         method to return example payloads found in the fixtures """
         cls.get_patcher = patch('requests.get', side_effect=HTTPError)
 
+    """ It is part of the unittest.TestCase API """
     @classmethod
     def tearDownClass(cls) -> None:
         """ It is part of the unittest.TestCase API
