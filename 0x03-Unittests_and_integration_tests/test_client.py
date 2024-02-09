@@ -14,7 +14,7 @@ class TestGithubOrgClient(unittest.TestCase):
     """ TESTCASE"""
 
     """inputs to test the functionality """
-    @parameterized_expand([
+    @parameterized.expand([
         ("google"),
         ("abc"),
         ])
