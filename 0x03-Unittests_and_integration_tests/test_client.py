@@ -2,7 +2,7 @@
 """ Parameterize and patch as decorators, Mocking a property, More patching,
     Parameterize, Integration test: fixtures, Integration tests """
 import unittest
-from typing import Dict 
+from typing import Dict
 from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized
 from client import GithubOrgClient
@@ -55,7 +55,8 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "my_license"}}, license_key="my_license"),
         ({"license": {"key": "other_license"}}, license_key="my_license"),
         ])
-    def test_has_license(self, repo: Dict, license_key: str, expected_return: bool) -> None:
+    def test_has_license(self, repo: Dict, license_key: str,
+                         expected_return: bool) -> None:
         """ to unit-test GithubOrgClient.has_license """
         test_client = GithubOrgClient("holberton")
         test_return = test_client.has_license(repo, license_key)
